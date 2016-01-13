@@ -18,5 +18,7 @@ queueMethods.enqueue = function(value) {
 };
 
 queueMethods.dequeue = function() {
-  this.queueSize--;
+  if (this.queueSize > 0) {
+    this.queueSize--;
+  }
 };
