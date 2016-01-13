@@ -17,3 +17,7 @@ stackMethods.size = function () {
 stackMethods.push = function(value) {
   this.stackSize++;
 };
+
+stackMethods.pop = function() {
+
+};
