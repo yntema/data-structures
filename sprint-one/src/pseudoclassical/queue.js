@@ -13,5 +13,5 @@ Queue.prototype.enqueue = function(value) {
 };
 
 Queue.prototype.dequeue = function() {
-
+  this.queueSize--;
 };
