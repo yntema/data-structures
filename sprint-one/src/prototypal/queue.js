@@ -3,7 +3,7 @@ var Queue = function() {
   // but try not not reference your old code in writing the new style.
   var newQueue = Object.create(queueMethods);
   newQueue.queueSize = 0;
-
+  newQueue.storage = {};
   return newQueue; 
 };
 
@@ -14,6 +14,7 @@ queueMethods.size = function() {
 };
 
 queueMethods.enqueue = function(value) {
+  this.storage[this.queueSize] = value;
   this.queueSize++;
 };
 
@@ -21,4 +22,5 @@ queueMethods.dequeue = function() {
   if (this.queueSize > 0) {
     this.queueSize--;
   }
+  return this.storage[this.queueSize];
 };
