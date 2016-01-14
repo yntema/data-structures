@@ -14,5 +14,5 @@ Stack.prototype.push = function(value) {
 };
 
 Stack.prototype.pop = function() {
-
+  this.stackSize--;
 };
