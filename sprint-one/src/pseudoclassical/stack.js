@@ -14,5 +14,7 @@ Stack.prototype.push = function(value) {
 };
 
 Stack.prototype.pop = function() {
-  this.stackSize--;
+  if(this.stackSize > 0) {
+    this.stackSize--;
+  }
 };
