@@ -12,3 +12,7 @@ Stack.prototype.size = function() {
 Stack.prototype.push = function(value) {
   this.stackSize++;
 };
+
+Stack.prototype.pop = function() {
+
+};
