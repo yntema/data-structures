@@ -10,7 +10,6 @@ var Graph = function() {
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
   this.storage[node] = {
-    value:node,
     edges:[]
   };
 };
@@ -61,7 +60,7 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
   for (var key in this.storage) {
-    cb(this.storage[key].value);
+    cb(key);
   }
 };
 
