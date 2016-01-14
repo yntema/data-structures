@@ -17,12 +17,15 @@ Graph.prototype.addNode = function(node) {
 Graph.prototype.contains = function(node) {
   if (this.value === node) {
     return true;
+  } else {
+    return false;
   }
 };
 
 // ------------------------
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
+  this.value = null;
 };
 
 // ------------------------
