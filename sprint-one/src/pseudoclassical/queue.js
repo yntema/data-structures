@@ -5,5 +5,9 @@ var Queue = function() {
 };
 
 Queue.prototype.size = function() {
-  return 0;
+  return this.queueSize;
+};
+
+Queue.prototype.enqueue = function(value) {
+  this.queueSize++;
 };
