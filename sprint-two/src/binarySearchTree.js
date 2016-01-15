@@ -24,8 +24,20 @@ BinarySearchTree.prototype.insert = function(val) {
 };
 
 
-BinarySearchTree.prototype.contains = function() {
-
+BinarySearchTree.prototype.contains = function(target) {
+  if (this.value === target) {
+    return true;
+  } else if (target > this.value) {
+    if (this.right === undefined) { 
+      return false;
+    }
+    return this.right.contains(target);
+  } else {
+    if (this.left === undefined) {
+      return false;
+    }
+    return this.left.contains(target);
+  }
 };
 
 
