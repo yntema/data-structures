@@ -11,7 +11,8 @@ setPrototype.add = function(item) {
 };
 
 setPrototype.contains = function(item) {
-  return (item in this._storage);
+  // return (item in this._storage);
+  return (this._storage[item] !== undefined); // refactored for constant time?
 };
 
 setPrototype.remove = function(item) {
