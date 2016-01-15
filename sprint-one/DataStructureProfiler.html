@@ -8,8 +8,14 @@
 
   <link rel="stylesheet" href="css/styles.css?v=1.0">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="src/functional/queue.js"></script>
-  <script src="src/functional/stack.js"></script>
+  <!-- <script src="src/functional/queue.js"></script>
+  <script src="src/functional/stack.js"></script> -->
+
+
+  <script src="src/functional-shared/queue.js"></script>
+  <script src="src/functional-shared/stack.js"></script>
+
+  
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -17,8 +23,8 @@
 
 <body>
 
-  <h1 class="stack-test">Testing...</h1>
-  <h1 class="queue-test"></h1>
+  <h1 class="test">Testing...</h1>
+
   <script>
   $(document).ready(function () { 
     var stacks = [];
@@ -56,7 +62,7 @@
       }
     }
 
-$('.queue-test').text('Done with tests');
+    $('.test').text('Done with tests');
   });
   </script>
 </body>
