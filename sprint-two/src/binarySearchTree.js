@@ -2,14 +2,24 @@ var BinarySearchTree = function(value) {
   var tree = Object.create(BinarySearchTree.prototype);
   tree.left = undefined;
   tree.right = undefined;
-  tree.value = undefined;
+  tree.value = value;
   return tree;
 };
 
 
 BinarySearchTree.prototype.insert = function(val) {
-  if (this.value === undefined) {
-    this.value = val;
+  if (val > this.value) { //go right
+    if(this.right === undefined) {
+      this.right = BinarySearchTree(val);
+    } else {
+      this.right.insert(val);
+    }
+  } else {
+    if(this.left === undefined) {
+      this.left = BinarySearchTree(val);
+    } else {
+      this.left.insert(val);
+    }
   }
 };
 
