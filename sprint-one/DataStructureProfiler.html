@@ -7,6 +7,7 @@
   <title>Data Structure Profiler</title>
 
   <link rel="stylesheet" href="css/styles.css?v=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="src/functional/queue.js"></script>
   <script src="src/functional/stack.js"></script>
   <!--[if lt IE 9]>
@@ -15,21 +16,48 @@
 </head>
 
 <body>
+
+  <h1 class="stack-test">Testing...</h1>
+  <h1 class="queue-test"></h1>
   <script>
+  $(document).ready(function () { 
     var stacks = [];
     var queues = [];
-    var iterations = 9999;    
-    for(var i = 0; i < iterations; i++) {
+    var iterations = 9999;
+    var i;
+    var j;    
+
+    // Stack Test
+    for(i = 0; i < iterations; i++) {
       stacks.push(Stack());
-      for(var j = 0; j < iterations; j++) {
+      for(j = 0; j < iterations; j++) {
         stacks[i].push(j);
       }
     }
-    for(var i = 0; i < iterations; i++) {
-      for(var j = 0; j < iterations; j++) {
+    for(i = 0; i < iterations; i++) {
+      for(j = 0; j < iterations; j++) {
         stacks[i].pop();
       }
     }
+
+//     $('.stack-test').text('Done with stack test');
+// $('.queue-test').text('Testing queue...');
+
+    // Queue Test
+    for(i = 0; i < iterations; i++) {
+      queues.push(Queue());
+      for(j = 0; j < iterations; j++) {
+        queues[i].enqueue(j);
+      }
+    }
+    for(i = 0; i < iterations; i++) {
+      for(j = 0; j < iterations; j++) {
+        queues[i].dequeue();
+      }
+    }
+
+$('.queue-test').text('Done with tests');
+  });
   </script>
 </body>
 </html>
