@@ -21,15 +21,14 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
-    var check = false;
     var currentNode = list.head;
     while (currentNode !== null) {
       if (currentNode.value === target) {
-        check = true;
+        return true;
       }
       currentNode = currentNode.next;
     }
-    return check;
+    return false;
   };
 
   return list;
