@@ -27,20 +27,22 @@ HashTable.prototype.insert = function(k, v) {
 HashTable.prototype.retrieve = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket = this._storage.get(index);
-  for (var i = 0; i < bucket.length; i++) {
-    if (bucket[i][0] === k) {
-      return bucket[i][1];
-    }
-  }
+  return this.bucketFind(bucket, k, function(item) {
+    return item[1];
+  });
+
+  // for (var i = 0; i < bucket.length; i++) {
+  //   if (bucket[i][0] === k) {
+  //     return bucket[i][1];
+  //   }
+  // }
 };
 
 HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket = this._storage.get(index);
-  this.bucketFind(bucket, function(item) {
-    if(item[0] === k) {
+  this.bucketFind(bucket, k,  function(item) {
       item[1] = undefined;
-    }
   });
 
   // for (var i = 0; i < bucket.length; i++) {
@@ -50,9 +52,11 @@ HashTable.prototype.remove = function(k) {
   // }
 };
 
-HashTable.prototype.bucketFind = function(bucket, func) {
+HashTable.prototype.bucketFind = function(bucket, key, func) {
   for (var i = 0; i < bucket.length; i++) {
-    func(bucket[i]);
+    if(bucket[i][0] === key) {
+      return func(bucket[i]);
+    }
   }
 };
 
