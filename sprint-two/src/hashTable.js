@@ -13,12 +13,10 @@ HashTable.prototype.insert = function(k, v) {
     this._storage.set(index, []);
     bucket = this._storage.get(index);
   }
-  for (var i = 0; i < bucket.length; i++) {
-    if (bucket[i][0] === k) {
-      bucket[i][1] = v;
-      exists = true;
-    }
-  }
+  this.bucketFind(bucket, k, function(item) {
+    item[1] = v;
+    exists = true;
+  } );
   if(!exists) {
     bucket.push([k, v]);
   }
@@ -30,12 +28,6 @@ HashTable.prototype.retrieve = function(k) {
   return this.bucketFind(bucket, k, function(item) {
     return item[1];
   });
-
-  // for (var i = 0; i < bucket.length; i++) {
-  //   if (bucket[i][0] === k) {
-  //     return bucket[i][1];
-  //   }
-  // }
 };
 
 HashTable.prototype.remove = function(k) {
@@ -44,12 +36,6 @@ HashTable.prototype.remove = function(k) {
   this.bucketFind(bucket, k,  function(item) {
       item[1] = undefined;
   });
-
-  // for (var i = 0; i < bucket.length; i++) {
-  //   if (bucket[i][0] === k) {
-  //     bucket[i][1] = undefined;
-  //   }
-  // }
 };
 
 HashTable.prototype.bucketFind = function(bucket, key, func) {
