@@ -46,7 +46,7 @@ var Node = function(value) {
 
   node.value = value;
   node.next = null;
-
+  node.previous = null;
   return node;
 };
 
