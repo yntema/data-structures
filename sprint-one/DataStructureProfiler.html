@@ -38,7 +38,7 @@
 
     // Stack Test
     for(i = 0; i < iterations; i++) {
-      stacks.push(Stack());
+      stacks.push(new Stack());
       for(j = 0; j < iterations; j++) {
         stacks[i].push(j);
       }
@@ -54,7 +54,7 @@
 
     // Queue Test
     for(i = 0; i < iterations; i++) {
-      queues.push(Queue());
+      queues.push(new Queue());
       for(j = 0; j < iterations; j++) {
         queues[i].enqueue(j);
       }
