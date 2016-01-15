@@ -19,6 +19,17 @@
   <h1 class="test">Testing...</h1>
 
 
+  <p>
+    Our testing function instantiated 9999 stacks and 9999 queues, adding and removing 9999 items to each.
+    CPU profile — Total time for testing:
+    Functional instantiation: 8120.1 ms
+    Functional-shared instantiation: 3649.2 ms
+    Prototypal instantiation: 3538.9 ms
+    Pseudoclassical instantiation: 3477.2 ms
+
+    Analysis: Functional instantiation was the slowest by far, taking over twice as long as any of the other instantiation patterns. The others were similar to each other, but pseudoclassical operated the fastest.
+    
+  </p>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   
   <script src="../lib/underscore/underscore.js"></script>
