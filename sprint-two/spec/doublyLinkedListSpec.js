@@ -62,7 +62,7 @@ describe('doublyLinkedList', function() {
     expect(doublyLinkedList.tail).to.have.property("previous");
   });
 
-  it('should have a previous property for each node', function() {
+  it('should have previous property point to previous node', function() {
     doublyLinkedList.addToTail(4);
     doublyLinkedList.addToTail(5);
     expect(doublyLinkedList.tail.previous.value).to.equal(4);
