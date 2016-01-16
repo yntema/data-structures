@@ -99,5 +99,14 @@ describe('doublyLinkedList', function() {
     expect(doublyLinkedList.contains(4)).to.equal(false);
   });
 
+  it('should handle removing from an empty list', function(){
+    doublyLinkedList.addToHead(4);
+    doublyLinkedList.addToHead(5);
+    doublyLinkedList.removeTail();
+    doublyLinkedList.removeTail();
+    expect(doublyLinkedList.removeTail()).to.equal(null);
+  });
+
+
   // add more tests here to test the functionality of doublyLinkedList
 });
