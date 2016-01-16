@@ -52,7 +52,27 @@ BinarySearchTree.prototype.depthFirstLog = function(func) {
 };
 
 BinarySearchTree.prototype.breadthFirstLog = function(func) {
-  
+  // create a queue
+  var queue = new Queue();
+
+  // add node to queue
+  queue.enqueue(this);
+
+  // until the queue is empty
+  while (queue.size() > 0) {
+    // dequeue a node
+    var node = queue.dequeue();
+    // run function on node value
+    func(node.value);
+
+    // enqueue nodes children
+    if (node.left) {
+      queue.enqueue(node.left);
+    }
+    if (node.right) {
+      queue.enqueue(node.right);
+    }
+  }
 };
 /*
  * Complexity: What is the time complexity of the above functions?
