@@ -73,7 +73,7 @@ describe('doublyLinkedList', function() {
     doublyLinkedList.addToTail(4);
     doublyLinkedList.addToTail(5);
     doublyLinkedList.removeHead();
-    expect(doublyLinkedList.head.previous.value).to.equal(null);
+    expect(doublyLinkedList.head.previous).to.equal(null);
   });
 
 
