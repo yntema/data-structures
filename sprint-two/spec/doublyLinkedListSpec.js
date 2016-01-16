@@ -84,20 +84,20 @@ describe('doublyLinkedList', function() {
     expect(doublyLinkedList.head.value).to.equal(5);
   });
 
-  // it("should contain a value that was added", function(){
-  //   doublyLinkedList.addToTail(4);
-  //   doublyLinkedList.addToTail(5);
-  //   expect(doublyLinkedList.contains(4)).to.equal(true);
-  //   expect(doublyLinkedList.contains(5)).to.equal(true);
-  //   expect(doublyLinkedList.contains(6)).to.equal(false);
-  // });
+  it("should contain a value that was added to head", function(){
+    doublyLinkedList.addToHead(4);
+    doublyLinkedList.addToHead(5);
+    expect(doublyLinkedList.contains(4)).to.equal(true);
+    expect(doublyLinkedList.contains(5)).to.equal(true);
+    expect(doublyLinkedList.contains(6)).to.equal(false);
+  });
 
-  // it('should not contain a value that was removed', function(){
-  //   doublyLinkedList.addToTail(4);
-  //   doublyLinkedList.addToTail(5);
-  //   doublyLinkedList.removeHead();
-  //   expect(doublyLinkedList.contains(4)).to.equal(false);
-  // });
+  it('should not contain a value that was removed from tail', function(){
+    doublyLinkedList.addToHead(4);
+    doublyLinkedList.addToHead(5);
+    doublyLinkedList.removeTail();
+    expect(doublyLinkedList.contains(4)).to.equal(false);
+  });
 
   // add more tests here to test the functionality of doublyLinkedList
 });

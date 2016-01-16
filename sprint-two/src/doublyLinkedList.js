@@ -46,6 +46,12 @@ var DoublyLinkedList = function() {
   };
 
   list.removeTail = function() {
+    var oldTail = list.tail;
+    list.tail = oldTail.previous;
+    if (list.tail) {
+      list.tail.next = null;
+    }
+    return oldTail.value;
 
   };
 
