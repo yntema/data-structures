@@ -58,4 +58,14 @@ describe('tree', function() {
     expect(removedTree.parent).to.equal(null);
   });
 
+  it('should invoke a callback on each node in the tree', function(){
+    var array = [];
+    var func = function(value){ array.push(value); };
+    tree.addChild(5);
+    tree.addChild(6);
+    tree.children[0].addChild(5.5);
+    tree.traverse(func);
+    expect(array).to.eql([undefined, 5, 5.5, 6]);
+  });
+
 });

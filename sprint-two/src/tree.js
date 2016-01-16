@@ -42,6 +42,15 @@ treeMethods.removeFromParent = function() {
   this.parent = null;
 };
 
+treeMethods.traverse = function(func) {
+  // call func on this.value
+  func(this.value);
+  // traverse all children
+  _.each(this.children, function(tree) {
+    tree.traverse(func);
+  });
+};
+
 
 
 /*
