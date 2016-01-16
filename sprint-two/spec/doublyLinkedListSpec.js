@@ -67,5 +67,15 @@ describe('doublyLinkedList', function() {
     doublyLinkedList.addToTail(5);
     expect(doublyLinkedList.tail.previous.value).to.equal(4);
   });
+
+
+  it('should have previous property on new head point to null', function() {
+    doublyLinkedList.addToTail(4);
+    doublyLinkedList.addToTail(5);
+    doublyLinkedList.removeHead();
+    expect(doublyLinkedList.head.previous.value).to.equal(null);
+  });
+
+
   // add more tests here to test the functionality of doublyLinkedList
 });
