@@ -18,14 +18,14 @@ HashTable.prototype.insert = function(k, v) {
     this._storage.set(index, []);
     bucket = this._storage.get(index);
   }
-  this.bucketFind(bucket, k, function(item) {
+  exists = this.bucketFind(bucket, k, function(item) {
     item[1] = v;
-    exists = true;
+    return true;
   } );
   if(!exists) {
     bucket.push([k, v]);
+    this.count++;
   }
-  this.count++;
 };
 
 HashTable.prototype.retrieve = function(k) {
@@ -41,11 +41,11 @@ HashTable.prototype.remove = function(k) {
   var index = getIndexBelowMaxForKey(k, this._limit);
   var bucket = this._storage.get(index);
   this.bucketFind(bucket, k,  function(item) {
-      item[1] = undefined;
-  });
-  if (this.count > 0) {
-    this.count--;
-  }
+    bucket.splice(bucket.indexOf(item), 1);
+    if (this.count > 0) {
+      this.count--;
+    }
+  }.bind(this));
 
   if (this.count / this._limit < 0.25) { // maybe <= ???
     // resize array
@@ -64,25 +64,17 @@ HashTable.prototype.bucketFind = function(bucket, key, func) {
 };
 
 HashTable.prototype.resize = function(newSize) {
-  // input: number
-  // copy storage object to oldStorage variable
   var oldStorage = this._storage;
-  // create new limited array with size newSize
   this._storage = LimitedArray(newSize);
-  // set new limit to newSize
-  this._limit = newSize;
-  // begin rehash function get new index for each item and insert it in new limited array
-  // loop through each bucket in oldStorage array 
-  _.each(this._storage, function(bucket) {
-    // loop through each tuple in buckets
+  this._limit = newSize; 
+  this.count = 0;
+  oldStorage.each(function(bucket) {
     _.each(bucket, function(tuple) {
-      // add key value pair to new storage using insert method
       if(tuple) {
         this.insert(tuple[0], tuple[1]);
       }
-    });
-  });
-  // output:none
+    }.bind(this));
+  }.bind(this));
 };
 
 

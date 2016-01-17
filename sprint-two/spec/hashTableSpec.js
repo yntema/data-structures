@@ -56,6 +56,16 @@ describe('hashTable', function() {
     expect(hashTable._limit).to.equal(16);
   });
 
+   it ('should contain names in new storage', function() {
+    _.each(people, function(person) {
+      var firstName = person[0], lastName = person[1];
+      hashTable.insert(firstName,lastName);
+    });
+    expect(hashTable._limit).to.equal(16);
+    expect(hashTable.retrieve('Steven')).to.equal('Tyler');
+    expect(hashTable.retrieve('Alan')).to.equal('Turing');
+  });
+
   it ('should halve in size when needed', function() {
     _.each(people, function(person) {
       var firstName = person[0], lastName = person[1];
